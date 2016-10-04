@@ -4,7 +4,11 @@ RUN apt-get -y update && apt-get -y install xvfb
 
 # Install Google Chrome:
 RUN apt-get -y install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4
-RUN apt-get -y install chromium
+#RUN apt-get -y install chromium
+RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+RUN apt-get update
+RUN apt-get install -y google-chrome-stable
 
 # Dependencies to make "headless" chrome/selenium work:
 RUN apt-get -y install xvfb gtk2-engines-pixbuf
@@ -43,10 +47,3 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 CMD [ "node" ]
-
-
-#Install chrome
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-apt-get update
-apt-get install -y google-chrome-stable
