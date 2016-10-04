@@ -47,3 +47,7 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs
 
 CMD [ "node" ]
+
+# Set up hosts file
+echo 127.0.0.1 spectrumlocal.com >> /etc/hosts
+echo 127.0.0.1 internal.localspectrum.com >> /etc/hosts
