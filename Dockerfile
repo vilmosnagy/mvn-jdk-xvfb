@@ -8,7 +8,7 @@ RUN apt-get -y install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
 RUN apt-get update
-RUN apt-get install -y chromium-browser=53.0.2785.143-0ubuntu1.1307
+RUN apt-get install -y chromium-browser
 
 # Dependencies to make "headless" chrome/selenium work:
 RUN apt-get -y install xvfb gtk2-engines-pixbuf
