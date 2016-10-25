@@ -48,6 +48,17 @@ RUN curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-
 
 CMD [ "node" ]
 
+## Fill up the maven and node caches with some data, just to speed up builds that little bit
+
+RUN mkdir /tmp/fake_build
+COPY pom.xml /tmp/fake_build/pom.xml
+COPY package.json /tmp/fake_build/package.json
+COPY bower.json /tmp/fake_build/bower.json
+
+RUN mvn dependency:go-offline
+RUN npm install
+RUN node node_modules/bower/bin/bower install
+
 # Set up hosts file
 RUN echo 127.0.0.1 spectrumlocal.com >> /etc/hosts
 RUN echo 127.0.0.1 internal.localspectrum.com >> /etc/hosts
