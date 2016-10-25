@@ -55,6 +55,7 @@ COPY pom.xml /tmp/fake_build/pom.xml
 COPY package.json /tmp/fake_build/package.json
 COPY bower.json /tmp/fake_build/bower.json
 
+RUN cd /tmp/fake_build
 RUN mvn dependency:go-offline
 RUN npm install
 RUN node node_modules/bower/bin/bower install
