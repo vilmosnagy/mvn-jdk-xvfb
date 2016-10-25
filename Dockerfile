@@ -57,7 +57,7 @@ COPY bower.json /tmp/fake_build/bower.json
 
 RUN cd /tmp/fake_build && mvn dependency:go-offline
 RUN cd /tmp/fake_build && npm install
-RUN cd /tmp/fake_build && node node_modules/bower/bin/bower install
+RUN cd /tmp/fake_build && node node_modules/bower/bin/bower --allow-root install
 
 # Set up hosts file
 RUN echo 127.0.0.1 spectrumlocal.com >> /etc/hosts
