@@ -62,3 +62,4 @@ RUN cd /tmp/fake_build && node node_modules/bower/bin/bower --allow-root install
 # Set up hosts file
 RUN echo 127.0.0.1 spectrumlocal.com >> /etc/hosts
 RUN echo 127.0.0.1 internal.localspectrum.com >> /etc/hosts
+
