@@ -1,4 +1,4 @@
-FROM maven:3-jdk-8
+FROM maven:3-jdk-11
 
 RUN apt-get -y update && apt-get -y install xvfb
 
